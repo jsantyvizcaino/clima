@@ -1,7 +1,7 @@
 ## CLIMA
 
 
-Esta aplicacion esta disenada con NodeJS y permite administrar tareas.
+Esta aplicacion esta disenada con NodeJS y permite conocer el clima de una ciudad por medio de su latitud y longuitud obtenida dentro de esta misma aplicacion por medio del nombre de la ciudad.
 
 Las opciones que tiene esta aplicacion son:
 - Crear
