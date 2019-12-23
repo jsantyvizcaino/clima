@@ -11,12 +11,29 @@ const argv = require('yargs').options({ //se utiliza el modulo yargs para config
 }).argv;
 
 
-location.getCiudad(argv.nombre) //se muestra el resultado de la busqueda por pantalla
-    .then(console.log);
+const inicio = async() => { //se utiliza un callback asyncrono para poder utilizar las funciones
+    //asyncronas de location y clima
+
+    try {
+
+        let ciudad = await location.getCiudad(argv.nombre); //la palabra reservada await permite que el flujo normal del programa se detenga hasta que la promesa se cumpla
+        let lat = ciudad.lat;
+        let lon = ciudad.lon;
+        let nombre = ciudad.name;
+
+        let temp = await clima.getClima(lat, lon); //la palabra reservada await permite que el flujo normal del programa se detenga hasta que la promesa se cumpla
+
+        console.log(`El clima en la ciudad de ${nombre} es de ${temp} grados dentigrados`);
+
+    } catch {
+
+        console.log('error');
+        return 'error';
+
+    }
 
 
 
+}
 
-
-
-clima.getClima(-0.19, -78.5).then(console.log);
+inicio(); //se invoca a la constante inicio
